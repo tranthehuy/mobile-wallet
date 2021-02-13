@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'services/transactions.dart';
-import 'pages/home.dart';
-import 'pages/update.dart';
-import 'pages/sum.dart';
-import 'pages/help.dart';
-import 'pages/config.dart';
+import 'views/home.dart';
+import 'views/update.dart';
+import 'views/sum.dart';
+import 'views/help.dart';
+import 'views/config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
