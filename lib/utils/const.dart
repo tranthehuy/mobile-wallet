@@ -5,3 +5,5 @@ enum MainMenuActions {
   config,
   help
 }
+
+typedef FormSubmitCallback = void Function(dynamic data);

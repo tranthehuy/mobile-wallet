@@ -2,8 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/transactions.dart';
-
-typedef FormSubmitCallback = void Function(dynamic data);
+import '../utils/const.dart';
 
 int convertDateTimeToSeconds(DateTime time) {
   var ms = time.millisecondsSinceEpoch;
