@@ -4,10 +4,8 @@ import 'package:sqflite/sqflite.dart';
 import '../models/transactions.dart';
 
 class TransactionsService {
-  Future<Database> database;
-  // WidgetsFlutterBinding.ensureInitialized();
-  
-  Future<Database> init() async {    
+  static Future<Database> database;
+  static Future<Database> init() async {    
     database = openDatabase(
       // Set the path to the database. Note: Using the `join` function from the
       // `path` package is best practice to ensure the path is correctly
@@ -29,7 +27,7 @@ class TransactionsService {
 
   Future<void> insert(Transactions transaction) async {
     // Get a reference to the database.
-    final Database db = await database;
+    final Database db = await TransactionsService.database;
 
     // Insert the transaction into the correct table. Also specify the
     // `conflictAlgorithm`. In this case, if the same transaction is inserted
@@ -43,7 +41,7 @@ class TransactionsService {
 
   Future<List<Transactions>> list() async {
     // Get a reference to the database.
-    final Database db = await database;
+    final Database db = await TransactionsService.database;
 
     // Query the table for all The transactions.
     final List<Map<String, dynamic>> maps = await db.query('transactions');
@@ -61,7 +59,7 @@ class TransactionsService {
 
   Future<void> update(Transactions transaction) async {
     // Get a reference to the database.
-    final db = await database;
+    final db = await TransactionsService.database;
 
     // Update the given transaction.
     await db.update(
@@ -76,7 +74,7 @@ class TransactionsService {
 
   Future<void> delete(int id) async {
     // Get a reference to the database.
-    final db = await database;
+    final db = await TransactionsService.database;
 
     // Remove the transaction from the database.
     await db.delete(
@@ -90,7 +88,7 @@ class TransactionsService {
 
   Future<void> clear() async {
     // Get a reference to the database.
-    final db = await database;
+    final db = await TransactionsService.database;
 
     // Remove the transaction from the database.
     await db.delete('transactions');

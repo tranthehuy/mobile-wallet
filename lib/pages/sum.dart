@@ -13,9 +13,7 @@ class _SumPageState extends State<SumPage> {
 
   void initDatabase () async {
     service = TransactionsService();
-    await service.init();
     List<Transactions> newItems = await service.list();
-    print(newItems);
     setState(() {
       items = newItems;
     });

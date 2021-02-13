@@ -16,7 +16,6 @@ class ConfigPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               TransactionsService service = TransactionsService();
-              await service.init();
               await service.clear();
             },
             child: Text('Xoá hết các giao dịch')

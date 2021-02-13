@@ -13,7 +13,6 @@ class UpdatePage extends StatelessWidget {
         margin: const EdgeInsets.only(left: 20.0, right: 20.0),
         child: TransactionForm(onFormSubmit: (transaction) async {
           TransactionsService service = TransactionsService();
-          await service.init();
           await service.insert(transaction);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text('Đã thêm vào bộ nhớ'),
