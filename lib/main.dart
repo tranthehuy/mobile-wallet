@@ -3,7 +3,6 @@ import 'pages/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
   runApp(MyApp());
 }
 

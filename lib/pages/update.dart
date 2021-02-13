@@ -72,11 +72,19 @@ class MyCustomFormState extends State<MyCustomForm> {
             items: <DropdownMenuItem<String>>[
               DropdownMenuItem<String>(
                 value: 'chi_tieu',
-                child: new Text('Chi tiêu'),
+                child: Container(
+                  height: 50,
+                  color: Colors.pink[100],
+                  child: Center(child: Text('Chi tiêu')),
+                )
               ),
               DropdownMenuItem<String>(
                 value: 'thu_nhap',
-                child: new Text('Thu nhập'),
+                child: Container(
+                  height: 50,
+                  color: Colors.green[100],
+                  child: Center(child: Text('Thu nhập')),
+                )
               )
             ],
           ),
