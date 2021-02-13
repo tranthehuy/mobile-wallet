@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 // import 'dart:developer' as developer;
 import '../components/main_menu.dart';
 import '../utils/const.dart';
-import './update.dart';
-import './sum.dart';
-import './help.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -57,22 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // developer.log('log me', name: 'developer.log');
           // developer.log(id.toString(), name: 'developer.log');
           if (id == MainMenuActions.update) {
-            Navigator.push(
-              context,
-              new MaterialPageRoute(builder: (ctxt) => new UpdatePage()),
-            );
+            Navigator.pushNamed(context, '/update');
           }
           if (id == MainMenuActions.summarize) {
-            Navigator.push(
-              context,
-              new MaterialPageRoute(builder: (ctxt) => new SumPage()),
-            );
+            Navigator.pushNamed(context, '/sum');
           }
           if (id == MainMenuActions.help) {
-            Navigator.push(
-              context,
-              new MaterialPageRoute(builder: (ctxt) => new HelpPage()),
-            );
+            Navigator.pushNamed(context, '/help');
           }
         }
       )

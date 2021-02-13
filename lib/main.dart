@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
+import 'pages/update.dart';
+import 'pages/sum.dart';
+import 'pages/help.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +31,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Sổ chi tiêu'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(title: 'Sổ chi tiêu'),
+        '/update': (context) => UpdatePage(),
+        '/sum': (context) => SumPage(),
+        '/help': (context) => HelpPage(),
+      },
     );
   }
 }
