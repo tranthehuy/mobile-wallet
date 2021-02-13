@@ -14,7 +14,7 @@ class TransactionsService {
       // When the database is first created, create a table to store transactions.
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE transactions(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, type TEXT)",
+          "CREATE TABLE transactions(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount INTEGER, type TEXT, creationTime INTEGER)",
         );
       },
       // Set the version. This executes the onCreate function and provides a
@@ -53,6 +53,7 @@ class TransactionsService {
         name: maps[i]['name'],
         amount: maps[i]['amount'],
         type: maps[i]['type'],
+        creationTime: maps[i]['creationTime'],
       );
     });
   }

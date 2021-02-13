@@ -1,8 +1,14 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/transactions.dart';
 
 typedef FormSubmitCallback = void Function(dynamic data);
+
+int convertDateTimeToSeconds(DateTime time) {
+  var ms = time.millisecondsSinceEpoch;
+  return (ms / 1000).round();
+}
 
 class TransactionForm extends StatefulWidget {
   const TransactionForm({ this.onFormSubmit });
@@ -20,6 +26,7 @@ class TransactionFormState extends State<TransactionForm> {
   String _type = 'chi_tieu';
   String _name = "Giao dịch mới";
   String _amount = "";
+  DateTime _creationTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +105,28 @@ class TransactionFormState extends State<TransactionForm> {
               return null;
             },
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            child: TextButton(
+              onPressed: () async {
+                DateTime selectedDate = DateTime.now();
+                final DateTime picked = await showDatePicker(
+                  context: context,
+                  initialDate: selectedDate,
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2025),
+                );
+                if (picked != null) {
+                  setState(() {
+                    _creationTime = picked;
+                  });
+                }
+              },
+              child: Text(
+                'Thời gian: ${DateFormat('yyyy-MM-dd').format(_creationTime)}'
+              )
+            ),
+          ),
           Container(
           margin: EdgeInsets.symmetric(vertical: 20.0),
           height: 30.0,
@@ -114,6 +143,7 @@ class TransactionFormState extends State<TransactionForm> {
                         name: _name,
                         amount: int.parse(_amount),
                         type: _type,
+                        creationTime: convertDateTimeToSeconds(_creationTime)
                       );
                       widget.onFormSubmit(transaction);
                     }
