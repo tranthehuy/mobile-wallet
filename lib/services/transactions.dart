@@ -87,4 +87,12 @@ class TransactionsService {
       whereArgs: [id],
     );
   }
+
+  Future<void> clear() async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the transaction from the database.
+    await db.delete('transactions');
+  }
 }

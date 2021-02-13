@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/transactions.dart';
 
 class ConfigPage extends StatelessWidget {
   @override
@@ -12,7 +13,14 @@ class ConfigPage extends StatelessWidget {
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          
+          ElevatedButton(
+            onPressed: () async {
+              TransactionsService service = TransactionsService();
+              await service.init();
+              await service.clear();
+            },
+            child: Text('Xoá hết các giao dịch')
+          )
         ])
       )
     );
