@@ -46,6 +46,17 @@ class _SumPageState extends State<SumPage> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Thống kê thu nhập"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              'Lọc',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            )
+          ),
+        ],
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(8),

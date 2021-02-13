@@ -9,17 +9,6 @@ class UpdatePage extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Thêm giao dịch"),
-        // actions: <Widget>[
-        //   TextButton(
-        //     onPressed: () {},
-        //     child: Text(
-        //       'Lưu',
-        //       style: TextStyle(
-        //         color: Colors.white,
-        //       ),
-        //     )
-        //   ),
-        // ],
       ),
       body: Container(
         margin: const EdgeInsets.only(left: 20.0, right: 20.0),
