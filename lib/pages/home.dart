@@ -27,6 +27,9 @@ class MenuHomePage extends StatelessWidget {
           if (id == MainMenuActions.help) {
             Navigator.pushNamed(context, '/help');
           }
+          if (id == MainMenuActions.config) {
+            Navigator.pushNamed(context, '/config');
+          }
         }
       ),
       floatingActionButton: FloatingActionButton(

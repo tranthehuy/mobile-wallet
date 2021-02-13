@@ -3,6 +3,7 @@ import 'pages/home.dart';
 import 'pages/update.dart';
 import 'pages/sum.dart';
 import 'pages/help.dart';
+import 'pages/config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,7 @@ class MainApp extends StatelessWidget {
         '/update': (context) => UpdatePage(),
         '/sum': (context) => SumPage(),
         '/help': (context) => HelpPage(),
+        '/config': (context) => ConfigPage(),
       },
     );
   }

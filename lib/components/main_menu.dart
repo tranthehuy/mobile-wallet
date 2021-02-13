@@ -14,7 +14,7 @@ class MainMenu extends StatelessWidget {
       shrinkWrap: true,
       children: <Widget>[
         ListTile(
-          leading: Icon(Icons.map),
+          leading: Icon(Icons.edit),
           title: Text('Cập nhật sổ'),
           onTap: () {
             onMenuTap(MainMenuActions.update);
@@ -25,6 +25,13 @@ class MainMenu extends StatelessWidget {
           title: Text('Thống kê'),
           onTap: () {
             onMenuTap(MainMenuActions.summarize);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text('Thiết lập ứng dụng'),
+          onTap: () {
+            onMenuTap(MainMenuActions.config);
           },
         ),
         ListTile(
