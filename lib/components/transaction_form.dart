@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/transactions.dart';
 import '../utils/const.dart';
-
-int convertDateTimeToSeconds(DateTime time) {
-  var ms = time.millisecondsSinceEpoch;
-  return (ms / 1000).round();
-}
+import '../utils/global.dart';
 
 class TransactionForm extends StatefulWidget {
   const TransactionForm({ this.onFormSubmit });

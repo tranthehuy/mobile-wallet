@@ -1,3 +1,5 @@
+import '../utils/global.dart';
+
 class Transactions {
   final int id;
   final String name;
@@ -21,6 +23,7 @@ class Transactions {
   // each transactions when using the print statement.
   @override
   String toString() {
-    return 'Transactions{id: $id, name: $name, price: $amount, type: $type, creationTime$creationTime';
+    DateTime t = convertSecondsToDateTime(creationTime);
+    return 'Transactions{id: $id, name: $name, price: $amount, type: $type, creationTime: $t';
   }
 }
