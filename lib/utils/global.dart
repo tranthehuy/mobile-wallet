@@ -19,3 +19,7 @@ void notifySuccess(BuildContext context, String message) {
     ),
   ));
 }
+
+Future sleep(int sec) {
+  return new Future.delayed(Duration(seconds: sec), () => true);
+}

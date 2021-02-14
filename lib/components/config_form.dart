@@ -118,7 +118,7 @@ class _ConfigFormState extends State<ConfigForm> {
                   child: Text(" ")
                 ),
                 TextButton(
-                  onPressed: () {
+                  onPressed: _updated == false ? null : () {
                     Navigator.pop(context);
                   },
                   child: Text(

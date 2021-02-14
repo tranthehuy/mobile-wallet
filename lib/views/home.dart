@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-import '../services/config.dart';
 import '../components/main_menu.dart';
 import '../utils/const.dart';
 
 class MenuHomePage extends StatelessWidget {
-  const MenuHomePage({
-    Key key,
-    this.title
-  }) : super(key: key);
-
-  final String title;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text('Sổ chi tiêu'),
       ),
       body: MainMenu(
-        onMenuTap: (MainMenuActions id) async {
-          ConfigService.init();
-
+        onMenuTap: (MainMenuActions id) {
           if (id == MainMenuActions.update) {
             Navigator.pushNamed(context, '/update');
           }

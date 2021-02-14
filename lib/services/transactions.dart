@@ -21,7 +21,6 @@ class TransactionsService {
       // path to perform database upgrades and downgrades.
       version: 1,
     );
-
     return database;
   }
 
