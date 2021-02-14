@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+String formatNumber (int value) {
+  var f = new NumberFormat();
+  return (f.format(value));
+}
+
+int parseInt (String str) {
+  int number = 0;
+  try {
+    number = int.parse(str);
+  } on Exception catch (_) {
+    print(_);
+  }
+  return number;
+}
 
 int convertDateTimeToSeconds(DateTime time) {
   var ms = time.millisecondsSinceEpoch;

@@ -3,6 +3,7 @@ import '../services/transactions.dart';
 import '../models/transactions.dart';
 import '../components/transaction_row.dart';
 import '../services/config.dart';
+import '../utils/global.dart';
 
 class SumPage extends StatefulWidget {
   @override
@@ -64,10 +65,12 @@ class _SumPageState extends State<SumPage> {
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
-              return Column(children: <Widget>[
-                Text(config.translateAndReplace('Chi phí: #1 đồng', sumOutcome.toString())),
-                Text(config.translateAndReplace('Thu nhập: #1 đồng', sumIncome.toString())),
-                Text(config.translateAndReplace('Tổng: #1 đồng', (sumIncome - sumOutcome).toString())),
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                Text(config.translateAndReplace('Thu nhập: #1 đồng', formatNumber(sumIncome))),
+                Text(config.translateAndReplace('Chi phí: #1 đồng', formatNumber(sumOutcome))),
+                Text(config.translateAndReplace('Tổng: #1 đồng', formatNumber(sumIncome - sumOutcome))),
                 Divider(),
                 renderTransactionRow(items[index])
               ]);

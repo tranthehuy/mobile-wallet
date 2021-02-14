@@ -27,17 +27,9 @@ class TransactionFormState extends State<TransactionForm> {
   int getConvertedNumber() {
     int convertedNumber = 0;
     String unitStr = ConfigService.getString('unit');
-
     int unit = unitStr == '1000' ? 1000 : 1;
-    try {
-      int amount = int.parse(_amount);
-      if (amount != null) {
-        convertedNumber = amount * unit;
-      }
-    } on Exception catch (_) {
-      print(_);
-    }
-
+    int amount = parseInt(_amount);
+    convertedNumber = amount * unit;
     return convertedNumber;
   }
 
@@ -123,7 +115,7 @@ class TransactionFormState extends State<TransactionForm> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Text(convertedNumber.toString() + ' ' + config.translate('đồng')),
+            child: Text(formatNumber(convertedNumber) + ' ' + config.translate('đồng')),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -161,7 +153,7 @@ class TransactionFormState extends State<TransactionForm> {
                       // If the form is valid, display a Snackbar.
                       var transaction = Transactions(
                         name: _name,
-                        amount: int.parse(_amount),
+                        amount: parseInt(_amount),
                         type: _type,
                         creationTime: convertDateTimeToSeconds(_creationTime)
                       );
