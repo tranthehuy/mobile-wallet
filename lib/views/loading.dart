@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 class LoadingPage extends StatelessWidget {
   @override
-  Widget build (BuildContext ctxt) {
+  Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(""),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: new Text("Loading..."),
-      )
-    );
+        appBar: new AppBar(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [CircularProgressIndicator()])
+          ],
+        ));
   }
 }
