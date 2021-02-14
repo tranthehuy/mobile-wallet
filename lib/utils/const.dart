@@ -19,6 +19,7 @@ Map<String, String> translatedText = {
   'Hỗ trợ': 'Support',
   'Liên hệ: tranthehuythesecond@gmail.com': 'Contact: tranthehuythesecond@gmail.com',
   'Đã cập nhật cài đặt mới': 'Updated new config',
+  'Đã thêm vào bộ nhớ': 'Saved',
   'Đã xoá': 'Removed',
   'Xoá hết các giao dịch': 'Remove all transaction',
   'Đơn vị nhập': 'Unit',
@@ -33,5 +34,12 @@ Map<String, String> translatedText = {
   'Thu nhập: #1 đồng': 'Income: #1 Dong',
   'Tổng: #1 đồng': 'Sum: #1 Dong',
   'đồng': 'Dong',
-  'Ngày tạo: #1': 'Created At: #1'
+  'Ngày tạo: #1': 'Created at: #1',
+  'Loại giao dịch': 'Transaction type',
+  'Chi tiêu': 'Outcome',
+  'Thu nhập': 'Income',
+  'Tên giao dịch': 'Transaction name',
+  'Số tiền': 'Amount',
+  'Thời gian: #1': 'Created at #1',
+  'Giao dịch mới': 'New Transaction'
 };

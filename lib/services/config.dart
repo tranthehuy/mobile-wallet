@@ -29,6 +29,9 @@ class ConfigService {
     if (prefs == null) return key;
     String lang = getString('language');
     if (lang == 'vn') return key;
+    if (translatedText[key] == null) {
+      print('Missing key $key');
+    }
     return translatedText[key] ?? key;
   }
 

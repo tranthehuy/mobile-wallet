@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../services/config.dart';
 import '../models/transactions.dart';
 import '../utils/const.dart';
 import '../utils/global.dart';
@@ -25,6 +26,20 @@ class TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
+    String unitStr = ConfigService.getString('unit');
+    int convertedNumber = 0;
+
+    int unit = unitStr == '1000' ? 1000 : 1;
+    try {
+      int amount = int.parse(_amount);
+      if (amount != null) {
+        convertedNumber = amount * unit;
+      }
+    } on Exception catch (_) {
+      print(_);
+    }
+
     // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
@@ -33,7 +48,7 @@ class TransactionFormState extends State<TransactionForm> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text("Loại giao dịch")
+            child: Text(config.translate("Loại giao dịch"))
           ),
           DropdownButton<String>(
             value: _type,
@@ -48,7 +63,7 @@ class TransactionFormState extends State<TransactionForm> {
                 child: Container(
                   height: 50,
                   color: Colors.pink[100],
-                  child: Center(child: Text('Chi tiêu')),
+                  child: Center(child: Text(config.translate('Chi tiêu'))),
                 )
               ),
               DropdownMenuItem<String>(
@@ -56,17 +71,17 @@ class TransactionFormState extends State<TransactionForm> {
                 child: Container(
                   height: 50,
                   color: Colors.green[100],
-                  child: Center(child: Text('Thu nhập')),
+                  child: Center(child: Text(config.translate('Thu nhập'))),
                 )
               )
             ],
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text("Tên giao dịch")
+            child: Text(config.translate("Tên giao dịch"))
           ),
           TextFormField(
-            initialValue: _name,
+            initialValue: config.translate(_name),
             onChanged: (String text) {
               setState(() {
                 _name = text;
@@ -74,14 +89,14 @@ class TransactionFormState extends State<TransactionForm> {
             },
             validator: (value) {
               if (value.isEmpty) {
-                return 'Vui lòng không để trống';
+                return config.translate('Vui lòng không để trống');
               }
               return null;
             },
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text("Số tiền")
+            child: Text(config.translate("Số tiền"))
           ),
           TextFormField(
             initialValue: _amount,
@@ -95,10 +110,14 @@ class TransactionFormState extends State<TransactionForm> {
             keyboardType: TextInputType.number,
             validator: (value) {
               if (value.isEmpty) {
-                return 'Vui lòng không để trống';
+                return config.translate('Vui lòng không để trống');
               }
               return null;
             },
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            child: Text(convertedNumber.toString() + ' ' + config.translate('đồng')),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -118,7 +137,7 @@ class TransactionFormState extends State<TransactionForm> {
                 }
               },
               child: Text(
-                'Thời gian: ${DateFormat('yyyy-MM-dd').format(_creationTime)}'
+                config.translateAndReplace('Thời gian: #1', DateFormat('yyyy-MM-dd').format(_creationTime))
               )
             ),
           ),
@@ -143,7 +162,7 @@ class TransactionFormState extends State<TransactionForm> {
                       widget.onFormSubmit(transaction);
                     }
                   },
-                  child: Text('Lưu')
+                  child: Text(config.translate('Lưu'))
                 ),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -154,7 +173,7 @@ class TransactionFormState extends State<TransactionForm> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    'Huỷ',
+                    config.translate('Huỷ'),
                     style: TextStyle(
                     // color: Colors.white,
                     ),
