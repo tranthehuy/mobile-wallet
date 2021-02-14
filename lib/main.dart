@@ -20,6 +20,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   bool ready = false;
+  int version = 0;
 
   void initAppConfig() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +51,11 @@ class _MainAppState extends State<MainApp> {
         '/update': (context) => UpdatePage(),
         '/sum': (context) => SumPage(),
         '/help': (context) => HelpPage(),
-        '/config': (context) => ConfigPage(),
+        '/config': (context) => ConfigPage(refeshCallback: (data) {
+          setState(() {
+            version = version + 1;
+          });
+        }),
         '/loading': (context) => LoadingPage(),
       },
     );

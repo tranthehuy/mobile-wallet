@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import '../utils/const.dart';
 
 class ConfigService {
   static SharedPreferences prefs;
@@ -22,5 +23,12 @@ class ConfigService {
 
   static void setString(String key, String str) async {
     await ConfigService.prefs.setString(key, str);
+  }
+
+  String translate(String key) {
+    if (prefs == null) return key;
+    String lang = getString('language');
+    if (lang == 'vn') return key;
+    return translatedText[key] ?? key;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/const.dart';
+import '../services/config.dart';
 
 typedef MenuTapCallback = void Function(MainMenuActions id);
 
@@ -10,33 +11,35 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
+
     return ListView(
       shrinkWrap: true,
       children: <Widget>[
         ListTile(
           leading: Icon(Icons.edit),
-          title: Text('Cập nhật sổ'),
+          title: Text(config.translate('Cập nhật sổ')),
           onTap: () {
             onMenuTap(MainMenuActions.update);
           },
         ),
         ListTile(
           leading: Icon(Icons.photo_album),
-          title: Text('Thống kê'),
+          title: Text(config.translate('Thống kê')),
           onTap: () {
             onMenuTap(MainMenuActions.summarize);
           },
         ),
         ListTile(
           leading: Icon(Icons.settings),
-          title: Text('Thiết lập ứng dụng'),
+          title: Text(config.translate('Thiết lập ứng dụng')), //
           onTap: () {
             onMenuTap(MainMenuActions.config);
           },
         ),
         ListTile(
           leading: Icon(Icons.phone),
-          title: Text('Hỗ trợ'),
+          title: Text(config.translate('Hỗ trợ')),
           onTap: () {
             onMenuTap(MainMenuActions.help);
           },

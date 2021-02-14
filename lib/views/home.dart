@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import '../components/main_menu.dart';
+import '../services/config.dart';
 import '../utils/const.dart';
 
 class MenuHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sổ chi tiêu'),
+        title: Text(config.translate('Sổ chi tiêu')),
       ),
       body: MainMenu(
         onMenuTap: (MainMenuActions id) {
@@ -29,7 +32,7 @@ class MenuHomePage extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/update');
         },
-        tooltip: 'Thêm giao dịch mới',
+        tooltip: config.translate('Thêm giao dịch mới'),
         child: Icon(Icons.add),
       ),
     );
