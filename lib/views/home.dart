@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/config.dart';
 import '../components/main_menu.dart';
 import '../utils/const.dart';
 
@@ -17,7 +18,9 @@ class MenuHomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: MainMenu(
-        onMenuTap: (MainMenuActions id) {
+        onMenuTap: (MainMenuActions id) async {
+          ConfigService.init();
+
           if (id == MainMenuActions.update) {
             Navigator.pushNamed(context, '/update');
           }

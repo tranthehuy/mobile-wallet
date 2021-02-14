@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import '../services/transactions.dart';
+import '../services/config.dart';
 import '../components/config_form.dart';
 
 class ConfigPage extends StatelessWidget {
   @override
   Widget build(BuildContext ctxt) {
+    String unit = ConfigService.getString('unit') ?? '1';
+    String language = ConfigService.getString('language') ?? 'vn';
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Thiết lập ứng dụng"),
@@ -15,8 +19,13 @@ class ConfigPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   ConfigForm(
+                    unit: unit,
+                    language: language,
                     onFormSubmit: (data) {
-                      print(data);
+                      String unit = data.unit;
+                      String language = data.language;
+                      ConfigService.setString('unit', unit);
+                      ConfigService.setString('language', language);
                     }
                   ),
                   TextButton(

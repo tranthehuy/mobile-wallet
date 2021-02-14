@@ -3,20 +3,29 @@ import '../models/config.dart';
 import '../utils/const.dart';
 
 class ConfigForm extends StatefulWidget {
-  const ConfigForm({ this.onFormSubmit });
+  const ConfigForm({ this.onFormSubmit, this.unit, this.language });
 
   final FormSubmitCallback onFormSubmit;
+  final String unit;
+  final String language;
 
   @override
-  ConfigFormState createState() {
-    return ConfigFormState();
+  _ConfigFormState createState() {
+    return _ConfigFormState();
   }
 }
 
-class ConfigFormState extends State<ConfigForm> {
+class _ConfigFormState extends State<ConfigForm> {
   final _formKey = GlobalKey<FormState>();
   String _unit = '1';
   String _language = "vn";
+
+  @override
+  void initState() {
+    super.initState();
+    _unit = widget.unit;
+    _language = widget.language;
+  }
 
   @override
   Widget build(BuildContext context) {
