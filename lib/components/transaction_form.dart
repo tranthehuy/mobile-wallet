@@ -24,11 +24,9 @@ class TransactionFormState extends State<TransactionForm> {
   String _amount = "";
   DateTime _creationTime = DateTime.now();
 
-  @override
-  Widget build(BuildContext context) {
-    ConfigService config = ConfigService();
-    String unitStr = ConfigService.getString('unit');
+  int getConvertedNumber() {
     int convertedNumber = 0;
+    String unitStr = ConfigService.getString('unit');
 
     int unit = unitStr == '1000' ? 1000 : 1;
     try {
@@ -39,6 +37,14 @@ class TransactionFormState extends State<TransactionForm> {
     } on Exception catch (_) {
       print(_);
     }
+
+    return convertedNumber;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
+    int convertedNumber = getConvertedNumber();
 
     // Build a Form widget using the _formKey created above.
     return Form(
