@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/transaction_form.dart';
 import '../services/transactions.dart';
+import '../utils/global.dart';
 
 class UpdatePage extends StatelessWidget {
   @override
@@ -14,14 +15,7 @@ class UpdatePage extends StatelessWidget {
         child: TransactionForm(onFormSubmit: (transaction) async {
           TransactionsService service = TransactionsService();
           await service.insert(transaction);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: const Text('Đã thêm vào bộ nhớ'),
-            duration: const Duration(seconds: 1),
-            action: SnackBarAction(
-              label: 'ACTION',
-              onPressed: () { },
-            ),
-          ));
+          notifySuccess(context, 'Đã thêm vào bộ nhớ');
           Navigator.pop(context);
         }),
       ),

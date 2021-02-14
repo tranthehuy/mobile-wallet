@@ -19,6 +19,7 @@ class _ConfigFormState extends State<ConfigForm> {
   final _formKey = GlobalKey<FormState>();
   String _unit = '1';
   String _language = "vn";
+  bool _updated = false;
 
   @override
   void initState() {
@@ -44,6 +45,7 @@ class _ConfigFormState extends State<ConfigForm> {
             onChanged: (String value) {
               setState(() {
                 _unit = value;
+                _updated = true;
               });
             },
             items: <DropdownMenuItem<String>>[
@@ -74,6 +76,7 @@ class _ConfigFormState extends State<ConfigForm> {
             onChanged: (String value) {
               setState(() {
                 _language = value;
+                _updated = true;
               });
             },
             items: <DropdownMenuItem<String>>[
@@ -100,7 +103,10 @@ class _ConfigFormState extends State<ConfigForm> {
               scrollDirection: Axis.horizontal,
               children: <Widget>[
                 ElevatedButton(
-                  onPressed: () async {
+                  onPressed: _updated == false ? null : () async {
+                    setState(() {
+                      _updated = false;
+                    });
                     widget.onFormSubmit(Config(
                       _unit, _language
                     ));
