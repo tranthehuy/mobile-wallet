@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/transactions.dart';
 import '../models/transactions.dart';
 import '../components/transaction_row.dart';
+import '../services/config.dart';
 
 class SumPage extends StatefulWidget {
   @override
@@ -43,14 +44,15 @@ class _SumPageState extends State<SumPage> {
 
   @override
   Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Thống kê thu nhập"),
+          title: new Text(config.translate("Thống kê thu nhập")),
           actions: <Widget>[
             TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Lọc',
+                  config.translate('Lọc'),
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -63,9 +65,9 @@ class _SumPageState extends State<SumPage> {
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
               return Column(children: <Widget>[
-                Text('Chi phí: $sumOutcome đồng'),
-                Text('Thu nhập: $sumIncome đồng'),
-                Text('Tổng: ${sumIncome - sumOutcome} đồng'),
+                Text(config.translateAndReplace('Chi phí: #1 đồng', sumOutcome.toString())),
+                Text(config.translateAndReplace('Thu nhập: #1 đồng', sumIncome.toString())),
+                Text(config.translateAndReplace('Tổng: #1 đồng', (sumIncome - sumOutcome).toString())),
                 Divider(),
                 renderTransactionRow(items[index])
               ]);

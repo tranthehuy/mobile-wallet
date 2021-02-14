@@ -12,12 +12,13 @@ class ConfigPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ConfigService config = ConfigService();
     String unit = ConfigService.getString('unit') ?? '1';
     String language = ConfigService.getString('language') ?? 'vn';
 
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Thiết lập ứng dụng"),
+          title: new Text(config.translate("Thiết lập ứng dụng")),
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -32,7 +33,7 @@ class ConfigPage extends StatelessWidget {
                       String language = data.language;
                       ConfigService.setString('unit', unit);
                       ConfigService.setString('language', language);
-                      notifySuccess(context, 'Đã cập nhật cài đặt mới');
+                      notifySuccess(context, config.translate('Đã cập nhật cài đặt mới'));
                       refeshCallback(true);
                     }
                   ),
@@ -40,10 +41,10 @@ class ConfigPage extends StatelessWidget {
                       onPressed: () async {
                         TransactionsService service = TransactionsService();
                         await service.clear();
-                        notifySuccess(context, 'Đã xoá');
+                        notifySuccess(context, config.translate('Đã xoá'));
                       },
                       child: Text(
-                        'Xoá hết các giao dịch',
+                        config.translate('Xoá hết các giao dịch'),
                         style: TextStyle(
                             // color: Colors.white,
                             ),

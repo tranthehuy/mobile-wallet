@@ -31,4 +31,8 @@ class ConfigService {
     if (lang == 'vn') return key;
     return translatedText[key] ?? key;
   }
+
+  String translateAndReplace(String key, String value) {
+    return translate(key).replaceAll('#1', value);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/config.dart';
+import '../services/config.dart';
 import '../utils/const.dart';
 
 class ConfigForm extends StatefulWidget {
@@ -31,6 +32,8 @@ class _ConfigFormState extends State<ConfigForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+    ConfigService config = ConfigService();
+
     return Form(
       key: _formKey,
       child: Column(
@@ -38,7 +41,7 @@ class _ConfigFormState extends State<ConfigForm> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text("Đơn vị nhập")
+            child: Text(config.translate("Đơn vị nhập"))
           ),
           DropdownButton<String>(
             value: _unit,
@@ -54,7 +57,7 @@ class _ConfigFormState extends State<ConfigForm> {
                 child: Container(
                   height: 50,
                   color: Colors.blue[100],
-                  child: Center(child: Text('Đồng')),
+                  child: Center(child: Text(config.translate("Đồng"))),
                 )
               ),
               DropdownMenuItem<String>(
@@ -62,14 +65,14 @@ class _ConfigFormState extends State<ConfigForm> {
                 child: Container(
                   height: 50,
                   color: Colors.blue[200],
-                  child: Center(child: Text('Ngàn Đồng')),
+                  child: Center(child: Text(config.translate("Ngàn Đồng"))),
                 )
               )
             ],
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text("Ngôn ngữ")
+            child: Text(config.translate("Ngôn ngữ"))
           ),
           DropdownButton<String>(
             value: _language,
@@ -84,14 +87,14 @@ class _ConfigFormState extends State<ConfigForm> {
                 value: 'vn',
                 child: Container(
                   height: 50,
-                  child: Center(child: Text('Tiếng Việt')),
+                  child: Center(child: Text(config.translate('Tiếng Việt'))),
                 )
               ),
               DropdownMenuItem<String>(
                 value: 'en',
                 child: Container(
                   height: 50,
-                  child: Center(child: Text('Tiếng Anh')),
+                  child: Center(child: Text(config.translate('Tiếng Anh'))),
                 )
               )
             ],
@@ -111,7 +114,7 @@ class _ConfigFormState extends State<ConfigForm> {
                       _unit, _language
                     ));
                   },
-                  child: Text('Lưu')
+                  child: Text(config.translate('Lưu'))
                 ),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -122,7 +125,7 @@ class _ConfigFormState extends State<ConfigForm> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    'Huỷ',
+                    config.translate('Huỷ'),
                     style: TextStyle(
                     // color: Colors.white,
                     ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../utils/global.dart';
+import '../services/config.dart';
 
 Container renderTransactionRow(item) {
+  ConfigService config = ConfigService();
   DateTime creationTime = convertSecondsToDateTime(item.creationTime);
   String time = DateFormat('yyyy-MM-dd').format(creationTime);
   return Container(
@@ -10,7 +12,7 @@ Container renderTransactionRow(item) {
       height: 50,
       color: item.type == 'chi_tieu' ? Colors.pink[200] : Colors.green[200],
       child: Column(children: <Widget>[
-        Center(child: Text('${item.name}: ${item.type == 'chi_tieu' ? '-' : ''}${item.amount} đồng')),
-        Center(child: Text('Ngày tạo: $time')),
+        Center(child: Text('${item.name}: ${item.type == 'chi_tieu' ? '-' : ''}${item.amount} ' + config.translate('đồng'))),
+        Center(child: Text(config.translateAndReplace('Ngày tạo: #1', time) )),
       ]));
 }
