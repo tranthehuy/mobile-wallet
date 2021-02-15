@@ -41,7 +41,7 @@ class _ConfigFormState extends State<ConfigForm> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text(config.translate("Đơn vị nhập"))
+            child: Text(config.translate("Unit"))
           ),
           DropdownButton<String>(
             value: _unit,
@@ -57,7 +57,7 @@ class _ConfigFormState extends State<ConfigForm> {
                 child: Container(
                   height: 50,
                   color: Colors.blue[100],
-                  child: Center(child: Text(config.translate("Đồng"))),
+                  child: Center(child: Text(config.translate("Dong"))),
                 )
               ),
               DropdownMenuItem<String>(
@@ -65,14 +65,14 @@ class _ConfigFormState extends State<ConfigForm> {
                 child: Container(
                   height: 50,
                   color: Colors.blue[200],
-                  child: Center(child: Text(config.translate("Ngàn Đồng"))),
+                  child: Center(child: Text(config.translate("Thousand Dong"))),
                 )
               )
             ],
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text(config.translate("Ngôn ngữ"))
+            child: Text(config.translate("Language"))
           ),
           DropdownButton<String>(
             value: _language,
@@ -87,14 +87,14 @@ class _ConfigFormState extends State<ConfigForm> {
                 value: 'vn',
                 child: Container(
                   height: 50,
-                  child: Center(child: Text(config.translate('Tiếng Việt'))),
+                  child: Center(child: Text(config.translate('Vietnamese'))),
                 )
               ),
               DropdownMenuItem<String>(
                 value: 'en',
                 child: Container(
                   height: 50,
-                  child: Center(child: Text(config.translate('Tiếng Anh'))),
+                  child: Center(child: Text(config.translate('English'))),
                 )
               )
             ],
@@ -114,7 +114,7 @@ class _ConfigFormState extends State<ConfigForm> {
                       _unit, _language
                     ));
                   },
-                  child: Text(config.translate('Lưu'))
+                  child: Text(config.translate('Save'))
                 ),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -125,7 +125,7 @@ class _ConfigFormState extends State<ConfigForm> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    config.translate('Huỷ'),
+                    config.translate('Cancel'),
                     style: TextStyle(
                     // color: Colors.white,
                     ),

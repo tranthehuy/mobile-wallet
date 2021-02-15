@@ -28,11 +28,16 @@ class ConfigService {
   String translate(String key) {
     if (prefs == null) return key;
     String lang = getString('language');
-    if (lang == 'vn') return key;
-    if (translatedText[key] == null) {
+    if (lang == 'en') return key;
+    if (vietnameseText[key] == null) {
       print('Missing key $key');
+      vietnameseText.forEach((key2, value) {
+        if (value == key) {
+          print('it is:      $key2      ');
+        }
+      });
     }
-    return translatedText[key] ?? key;
+    return vietnameseText[key] ?? key;
   }
 
   String translateAndReplace(String key, String value) {

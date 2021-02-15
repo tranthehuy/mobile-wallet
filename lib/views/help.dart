@@ -8,11 +8,11 @@ class HelpPage extends StatelessWidget {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(config.translate("Hỗ trợ")),
+        title: new Text(config.translate("Support")),
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
-        child: new Text(config.translate("Liên hệ: tranthehuythesecond@gmail.com")),
+        child: new Text(config.translate("Contact: tranthehuythesecond@gmail.com")),
       )
     );
   }

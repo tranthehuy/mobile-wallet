@@ -10,7 +10,7 @@ class UpdatePage extends StatelessWidget {
     ConfigService config = ConfigService();
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(config.translate("Thêm giao dịch mới")),
+        title: new Text(config.translate("Create new transaction")),
       ),
       body: Container(
         margin: const EdgeInsets.only(left: 20.0, right: 20.0),

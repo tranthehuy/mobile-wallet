@@ -9,7 +9,7 @@ String formatNumber (int value) {
 int parseInt (String str) {
   int number = 0;
   try {
-    number = int.parse(str);
+    number = str == '' ? 0 : int.parse(str);
   } on Exception catch (_) {
     print(_);
   }
@@ -30,7 +30,7 @@ void notifySuccess(BuildContext context, String message) {
     content: Text(message),
     duration: Duration(seconds: 1),
     action: SnackBarAction(
-      label: 'Đóng',
+      label: 'X',
       onPressed: () { },
     ),
   ));

@@ -19,8 +19,8 @@ class TransactionForm extends StatefulWidget {
 
 class TransactionFormState extends State<TransactionForm> {
   final _formKey = GlobalKey<FormState>();
-  String _type = 'chi_tieu';
-  String _name = "Giao dịch mới";
+  String _type = 'outcome';
+  String _name = "New Transaction";
   String _amount = "";
   DateTime _creationTime = DateTime.now();
 
@@ -46,7 +46,7 @@ class TransactionFormState extends State<TransactionForm> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text(config.translate("Loại giao dịch"))
+            child: Text(config.translate("Transaction type"))
           ),
           DropdownButton<String>(
             value: _type,
@@ -57,26 +57,26 @@ class TransactionFormState extends State<TransactionForm> {
             },
             items: <DropdownMenuItem<String>>[
               DropdownMenuItem<String>(
-                value: 'chi_tieu',
+                value: 'outcome',
                 child: Container(
                   height: 50,
                   color: Colors.pink[100],
-                  child: Center(child: Text(config.translate('Chi tiêu'))),
+                  child: Center(child: Text(config.translate('Outcome'))),
                 )
               ),
               DropdownMenuItem<String>(
-                value: 'thu_nhap',
+                value: 'income',
                 child: Container(
                   height: 50,
                   color: Colors.green[100],
-                  child: Center(child: Text(config.translate('Thu nhập'))),
+                  child: Center(child: Text(config.translate('Income'))),
                 )
               )
             ],
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text(config.translate("Tên giao dịch"))
+            child: Text(config.translate("Transaction name"))
           ),
           TextFormField(
             initialValue: config.translate(_name),
@@ -94,7 +94,7 @@ class TransactionFormState extends State<TransactionForm> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-            child: Text(config.translate("Số tiền"))
+            child: Text(config.translate("Amount"))
           ),
           TextFormField(
             initialValue: _amount,
@@ -115,7 +115,7 @@ class TransactionFormState extends State<TransactionForm> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Text(formatNumber(convertedNumber) + ' ' + config.translate('đồng')),
+            child: Text(formatNumber(convertedNumber) + ' ' + config.translate('Dong')),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -135,7 +135,7 @@ class TransactionFormState extends State<TransactionForm> {
                 }
               },
               child: Text(
-                config.translateAndReplace('Thời gian: #1', DateFormat('yyyy-MM-dd').format(_creationTime))
+                config.translateAndReplace('Created at #1', DateFormat('yyyy-MM-dd').format(_creationTime))
               )
             ),
           ),
@@ -160,7 +160,7 @@ class TransactionFormState extends State<TransactionForm> {
                       widget.onFormSubmit(transaction);
                     }
                   },
-                  child: Text(config.translate('Lưu'))
+                  child: Text(config.translate('Save'))
                 ),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -171,7 +171,7 @@ class TransactionFormState extends State<TransactionForm> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    config.translate('Huỷ'),
+                    config.translate('Cancel'),
                     style: TextStyle(
                     // color: Colors.white,
                     ),

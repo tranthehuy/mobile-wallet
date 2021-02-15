@@ -24,7 +24,7 @@ class _SumPageState extends State<SumPage> {
     int newSumOutcome = 0;
 
     for (var i = 0; i < newItems.length; i++) {
-      if (newItems[i].type == 'thu_nhap') {
+      if (newItems[i].type == 'income') {
         newSumIncome += newItems[i].amount;
       } else {
         newSumOutcome += newItems[i].amount;
@@ -76,11 +76,11 @@ class _SumPageState extends State<SumPage> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Text(config.translateAndReplace(
-                      'Thu nhập: #1 đồng', formatNumber(sumIncome))),
+                      'Income: #1 Dong', formatNumber(sumIncome))),
                   Text(config.translateAndReplace(
-                      'Chi phí: #1 đồng', formatNumber(sumOutcome))),
+                      'Outcome: #1 Dong', formatNumber(sumOutcome))),
                   Text(config.translateAndReplace(
-                      'Tổng: #1 đồng', formatNumber(sumIncome - sumOutcome))),
+                      'Sum: #1 Dong', formatNumber(sumIncome - sumOutcome))),
                   Divider(),
                   renderTransactionRow(items[index])
                 ]);
@@ -90,19 +90,19 @@ class _SumPageState extends State<SumPage> {
         separatorBuilder: (BuildContext context, int index) => const Divider(),
       );
     } else {
-      content = renderTextRow('Danh sách rỗng', Colors.cyan[100]);
+      content = renderTextRow('There is no transaction to show', Colors.cyan[100]);
     }
 
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(config.translate("Thống kê thu nhập")),
+          title: new Text(config.translate("Summarize profit")),
           actions: <Widget>[
             TextButton(
                 onPressed: () {
                   showFilterBox();
                 },
                 child: Text(
-                  config.translate('Lọc'),
+                  config.translate('Filter'),
                   style: TextStyle(
                     color: Colors.white,
                   ),

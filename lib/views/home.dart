@@ -10,7 +10,7 @@ class MenuHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(config.translate('Sổ chi tiêu')),
+        title: Text(config.translate('Vietnamese Wallet')),
       ),
       body: MainMenu(
         onMenuTap: (MainMenuActions id) {
@@ -32,7 +32,7 @@ class MenuHomePage extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/update');
         },
-        tooltip: config.translate('Thêm giao dịch mới'),
+        tooltip: config.translate('Create new transaction'),
         child: Icon(Icons.add),
       ),
     );

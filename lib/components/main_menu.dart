@@ -18,28 +18,28 @@ class MainMenu extends StatelessWidget {
       children: <Widget>[
         ListTile(
           leading: Icon(Icons.edit),
-          title: Text(config.translate('Cập nhật sổ')),
+          title: Text(config.translate('Update wallet')),
           onTap: () {
             onMenuTap(MainMenuActions.update);
           },
         ),
         ListTile(
           leading: Icon(Icons.photo_album),
-          title: Text(config.translate('Thống kê')),
+          title: Text(config.translate('Summarize')),
           onTap: () {
             onMenuTap(MainMenuActions.summarize);
           },
         ),
         ListTile(
           leading: Icon(Icons.settings),
-          title: Text(config.translate('Thiết lập ứng dụng')), //
+          title: Text(config.translate('Application Settings')), //
           onTap: () {
             onMenuTap(MainMenuActions.config);
           },
         ),
         ListTile(
           leading: Icon(Icons.phone),
-          title: Text(config.translate('Hỗ trợ')),
+          title: Text(config.translate('Support')),
           onTap: () {
             onMenuTap(MainMenuActions.help);
           },
