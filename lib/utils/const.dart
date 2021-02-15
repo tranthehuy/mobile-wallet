@@ -41,5 +41,6 @@ Map<String, String> translatedText = {
   'Tên giao dịch': 'Transaction name',
   'Số tiền': 'Amount',
   'Thời gian: #1': 'Created at #1',
-  'Giao dịch mới': 'New Transaction'
+  'Giao dịch mới': 'New Transaction',
+  'Danh sách rỗng': 'There is no transaction to show',
 };

@@ -153,7 +153,7 @@ class TransactionFormState extends State<TransactionForm> {
                       // If the form is valid, display a Snackbar.
                       var transaction = Transactions(
                         name: _name,
-                        amount: parseInt(_amount),
+                        amount: getConvertedNumber(),
                         type: _type,
                         creationTime: convertDateTimeToSeconds(_creationTime)
                       );
