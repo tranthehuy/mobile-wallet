@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../services/transactions.dart';
 import '../models/transactions.dart';
 import '../components/transaction_row.dart';
+import '../components/sum_transactions_row.dart';
 import '../services/config.dart';
-import '../utils/global.dart';
 import '../components/text_row.dart';
 
 class SumPage extends StatefulWidget {
@@ -45,14 +45,16 @@ class _SumPageState extends State<SumPage> {
   }
 
   void showFilterBox() {
+    ConfigService config = ConfigService();
+
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
-              title: new Text("Material Dialog"),
-              content: new Text("Hey! I'm Coflutter!"),
+              title: new Text(config.translate("Filter Box")),
+              content: new Text(config.translate("Hell world")),
               actions: <Widget>[
                 TextButton(
-                  child: Text('Close me!'),
+                  child: Text(config.translate('Apply')),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -73,15 +75,8 @@ class _SumPageState extends State<SumPage> {
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
-                  Text(config.translateAndReplace(
-                      'Income: #1 Dong', formatNumber(sumIncome))),
-                  Text(config.translateAndReplace(
-                      'Outcome: #1 Dong', formatNumber(sumOutcome))),
-                  Text(config.translateAndReplace(
-                      'Sum: #1 Dong', formatNumber(sumIncome - sumOutcome))),
-                  Divider(),
+                  renderSumTransactionsRow(sumIncome, sumOutcome),
                   renderTransactionRow(items[index])
                 ]);
           }

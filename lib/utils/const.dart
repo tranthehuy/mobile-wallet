@@ -43,4 +43,6 @@ Map<String, String> vietnameseText = {
   'New Transaction':'Giao dịch mới',
   'There is no transaction to show':'Danh sách rỗng',
   'This field is required': 'Vui lòng không để trống',
+  'Filter Box': 'Bộ lọc',
+  'Apply': 'Áp dụng',
 };

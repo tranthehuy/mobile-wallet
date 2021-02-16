@@ -30,12 +30,7 @@ class ConfigService {
     String lang = getString('language');
     if (lang == 'en') return key;
     if (vietnameseText[key] == null) {
-      print('Missing key $key');
-      vietnameseText.forEach((key2, value) {
-        if (value == key) {
-          print('it is:      $key2      ');
-        }
-      });
+      print('Missing key $key ');
     }
     return vietnameseText[key] ?? key;
   }
