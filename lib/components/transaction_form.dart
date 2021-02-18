@@ -49,6 +49,7 @@ class TransactionFormState extends State<TransactionForm> {
             child: Text(config.translate("Transaction type"))
           ),
           DropdownButton<String>(
+            isExpanded: true,
             value: _type,
             onChanged: (String value) {
               setState(() {

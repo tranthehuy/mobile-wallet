@@ -45,4 +45,8 @@ Map<String, String> vietnameseText = {
   'This field is required': 'Vui lòng không để trống',
   'Filter Box': 'Bộ lọc',
   'Apply': 'Áp dụng',
+  'All': 'Tất cả',
+  'Time range': 'Khoảng thời gian',
+  'From #1': 'Từ ngày #1',
+  'To #1': 'Đến ngày #1',
 };

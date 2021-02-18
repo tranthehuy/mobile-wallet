@@ -4,6 +4,7 @@ import '../models/transactions.dart';
 import '../components/transaction_row.dart';
 import '../components/sum_transactions_row.dart';
 import '../services/config.dart';
+import '../components/filter_modal.dart';
 import '../components/text_row.dart';
 
 class SumPage extends StatefulWidget {
@@ -45,28 +46,12 @@ class _SumPageState extends State<SumPage> {
   }
 
   void showFilterBox() {
-    ConfigService config = ConfigService();
-
-    showDialog(
-        context: context,
-        builder: (_) => new AlertDialog(
-              title: new Text(config.translate("Filter Box")),
-              content: new Text(config.translate("Hell world")),
-              actions: <Widget>[
-                TextButton(
-                  child: Text(config.translate('Apply')),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            ));
+    showDialog(context: context, builder: (_) => FilterModal());
   }
 
   @override
   Widget build(BuildContext context) {
     ConfigService config = ConfigService();
-
     Widget content;
     if (items.length > 0) {
       content = ListView.separated(
@@ -74,18 +59,18 @@ class _SumPageState extends State<SumPage> {
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
-            return Column(
-                children: <Widget>[
-                  renderSumTransactionsRow(sumIncome, sumOutcome),
-                  renderTransactionRow(items[index])
-                ]);
+            return Column(children: <Widget>[
+              renderSumTransactionsRow(sumIncome, sumOutcome),
+              renderTransactionRow(items[index])
+            ]);
           }
           return renderTransactionRow(items[index]);
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(),
       );
     } else {
-      content = renderTextRow('There is no transaction to show', Colors.cyan[100]);
+      content =
+          renderTextRow('There is no transaction to show', Colors.cyan[100]);
     }
 
     return new Scaffold(

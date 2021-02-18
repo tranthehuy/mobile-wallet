@@ -44,6 +44,7 @@ class _ConfigFormState extends State<ConfigForm> {
             child: Text(config.translate("Unit"))
           ),
           DropdownButton<String>(
+            isExpanded: true,
             value: _unit,
             onChanged: (String value) {
               setState(() {
@@ -75,6 +76,7 @@ class _ConfigFormState extends State<ConfigForm> {
             child: Text(config.translate("Language"))
           ),
           DropdownButton<String>(
+            isExpanded: true,
             value: _language,
             onChanged: (String value) {
               setState(() {
