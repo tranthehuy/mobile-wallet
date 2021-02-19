@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import '../models/filter_condition.dart';
 import '../services/config.dart';
 import '../models/transactions.dart';
 import '../utils/const.dart';
@@ -127,8 +127,8 @@ class FilterModalState extends State<FilterModal> {
           child: Text(config.translate('Apply')),
           onPressed: () {
             if (_formKey.currentState.validate()) {
-              var transaction = Transactions();
-              widget.onFormSubmit(transaction);
+              var condition = FilterCondition(_type, _startTime, _endTime);
+              widget.onFormSubmit(condition);
             }
             Navigator.of(context).pop();
           },

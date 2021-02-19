@@ -18,9 +18,14 @@ class _SumPageState extends State<SumPage> {
   int sumIncome = 0;
   int sumOutcome = 0;
 
-  void initDatabase() async {
+  Future<List<Transactions>> fetchData() async {
     service = TransactionsService();
     List<Transactions> newItems = await service.list();
+    return newItems;
+  }
+
+  void initDatabase() async {
+    List<Transactions> newItems = await fetchData();
     int newSumIncome = 0;
     int newSumOutcome = 0;
 
@@ -46,7 +51,11 @@ class _SumPageState extends State<SumPage> {
   }
 
   void showFilterBox() {
-    showDialog(context: context, builder: (_) => FilterModal());
+    showDialog(context: context, builder: (_) => FilterModal(
+      onFormSubmit: (dynamic form) {
+
+      },
+    ));
   }
 
   @override
