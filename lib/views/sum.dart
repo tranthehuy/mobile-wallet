@@ -6,6 +6,7 @@ import '../components/sum_transactions_row.dart';
 import '../services/config.dart';
 import '../components/filter_modal.dart';
 import '../components/text_row.dart';
+import '../utils/global.dart';
 
 class SumPage extends StatefulWidget {
   @override
@@ -15,12 +16,16 @@ class SumPage extends StatefulWidget {
 class _SumPageState extends State<SumPage> {
   List<Transactions> items = [];
   TransactionsService service;
+  String filterType = 'all';
+  int filterStartTime = -1;
+  int filterEndTime = -1;
   int sumIncome = 0;
   int sumOutcome = 0;
 
   Future<List<Transactions>> fetchData() async {
     service = TransactionsService();
-    List<Transactions> newItems = await service.list();
+    List<Transactions> newItems =
+        await service.list(filterType, filterStartTime, filterEndTime);
     return newItems;
   }
 
@@ -51,11 +56,18 @@ class _SumPageState extends State<SumPage> {
   }
 
   void showFilterBox() {
-    showDialog(context: context, builder: (_) => FilterModal(
-      onFormSubmit: (dynamic form) {
-
-      },
-    ));
+    showDialog(
+        context: context,
+        builder: (_) => FilterModal(
+              onFormSubmit: (dynamic form) async {
+                setState(() {
+                  filterType = form.type;
+                  filterStartTime = convertDateTimeToSeconds(form.startTime); // start of this day
+                  filterEndTime = convertDateTimeToSeconds(form.endTime) + 86400; // end of this day
+                });
+                initDatabase();
+              },
+            ));
   }
 
   @override

@@ -38,12 +38,33 @@ class TransactionsService {
     );
   }
 
-  Future<List<Transactions>> list() async {
-    // Get a reference to the database.
+  Future<List<Transactions>> list(String type, int startTime, int endTime) async {
+    bool hasCondition = false;
+    List<String> queryArray = [];
+    String queryCondition = '';
     final Database db = await TransactionsService.database;
 
-    // Query the table for all The transactions.
-    final List<Map<String, dynamic>> maps = await db.query('transactions');
+    if (type != 'all') {
+      queryArray.add('type = \'$type\'');
+    }
+
+    if (startTime != -1) {
+      queryArray.add('creationTime >= \'${startTime.toString()}\'');
+    }
+
+    if (endTime != -1) {
+      queryArray.add('creationTime <= \'${endTime.toString()}\'');
+    }
+
+    hasCondition = queryArray.length > 0;
+    queryCondition = queryArray.join(' AND ');
+
+    print( queryCondition);
+
+    final List<Map<String, dynamic>> maps = 
+      !hasCondition ? 
+        await db.query('transactions'):
+        await db.rawQuery('SELECT * FROM transactions WHERE $queryCondition');
 
     // Convert the List<Map<String, dynamic> into a List<transaction>.
     return List.generate(maps.length, (i) {
